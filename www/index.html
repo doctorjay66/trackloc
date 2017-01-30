@@ -34,7 +34,21 @@
         var coords = position.coords;
         document.getElementById("editLat").value = coords.latitude;
         document.getElementById("editLong").value = coords.longitude;
-        //initMap(coords.latitude, coords.longitude);
+        initMap(coords.latitude, coords.longitude);
+      }
+      
+      function initMap(lat, long){
+        var options = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+      
+        alert("init map");
+        
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        var markerPoint = new google.maps.LatLng(lat, long);
+        var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});
       }
       
       function onFailure(error){
