@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example 22-1</title>
+    <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0, maximum-scale=1.0, 
+          user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="jquery.mobile1.0b3.min.css" />
+    <script type="text/javascript" charset="utf-8" src="jquery1.6.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery.mobile1.0b3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="date.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD--Vr_RD_29h6L4Ccf6BWROAWR5A5eH8c&sensor=true"></script>
+    <script type="text/javascript" charset="utf-8" src="main.js"></script>
+    <script type="text/javascript">
+      function onBodyLoad() {
+        //During testing, Let me know we got this far
+        alert("onBodyLoad");
+        //Add the PhoneGap deviceready event listener
+        document.addEventListener("deviceready", onDeviceReady, false);
+      }
+
+      function onDeviceReady() {
+        //During testing, Let me know PhoneGap actually
+        // initialized
+        alert("onDeviceReady");
+        navigator.geolocation.getCurrentPosition(onSuccess, onFailure, {timeout: 5000, enableAccuracy: false});
+        //initialize the database and data storage
+        init();
+      }
+      
+      function onSuccess(position){
+        var coords = position.coords;
+        //initMap(coords.latitude, coords.longitude);
+      }
+      
+      function onFailure(error){
+        alert(error.message);
+      }
+    </script>
+  </head>
+  <body onload="onBodyLoad()">
+    <section id="main" data-role="page" >
+      <header data-role="header">        
+        <h1>Location Tracker</h1>
+        <a onclick="gotoMap();" data-icon="grid" >Views</a>
+        <!--<a onclick="showConfigPage();" data-icon="gear" >Config</a>-->
+      </header>
+      <div data-role="content">
+        <label for="editLat">Lat:</label>
+        <input type="text" name="editLat" id="editLat" value="" />
+        <br />
+        <label for="editLong">Long:</label>
+        <input type="text" name="editLong" id="editLong" value="" />
+        <br />
+        <input type="button" value="Save" onclick="saveRecord();">
+      </div>
+    </section>
+    <section id="viewMap" data-role="page" data-add-back-btn="true">
+      <header data-role="header">
+        <h1>Loc Views</h1>
+      </header>
+      <div data-role="content">
+        <div id='map'></div>
+      </div>
+    </section>
+  </body>
+</html>
