@@ -45,7 +45,8 @@
     var currentHeading = null;
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onFailure, {timeout: 5000, enableAccuracy: false});
+      init();  
+      navigator.geolocation.getCurrentPosition(onSuccess, onFailure, {timeout: 5000, enableAccuracy: false});
     }
     function onSuccess(position){
         var coords = position.coords;
