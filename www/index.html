@@ -25,31 +25,6 @@
   </head>
   <body>
     <div id='map'></div>
-    <section id="main" data-role="page" >
-      <header data-role="header">        
-        <h1>Location Tracker</h1>
-        <a onclick="gotoMap();" data-icon="grid" >Views</a>
-        <!--<a onclick="showConfigPage();" data-icon="gear" >Config</a>-->
-      </header>
-      <div data-role="content">
-        <label for="editLat">Lat:</label>
-        <input type="text" name="editLat" id="editLat" value="" />
-        <br />
-        <label for="editLong">Long:</label>
-        <input type="text" name="editLong" id="editLong" value="" />
-        <br />
-        <input type="button" value="Save" onclick="saveRecord();">
-        
-      </div>
-    </section>
-    <section id="viewMap" data-role="page" data-add-back-btn="true">
-      <header data-role="header">
-        <h1>Loc Views</h1>
-      </header>
-      <div data-role="content">
-        
-      </div>
-    </section>
  <script type="text/javascript">
     var currentHeading = null;
     document.addEventListener("deviceready", onDeviceReady, false);
