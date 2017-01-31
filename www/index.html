@@ -49,6 +49,8 @@
     }
     function onSuccess(position){
         var coords = position.coords;
+        document.getElementById("editLat").value = coords.latitude;
+        document.getElementById("editLong").value = coords.longitude;
         initMap(coords.latitude, coords.longitude);
     }
     
