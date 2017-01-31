@@ -8,7 +8,7 @@
          height: 230px;
          display: block;
          margin: 5px auto;
-         position: relative;
+         /*position: relative;*/
       }
     </style>
     <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0, maximum-scale=1.0, 
@@ -30,8 +30,10 @@
         <a onclick="gotoMap();" data-icon="grid" >Views</a>
         <!--<a onclick="showConfigPage();" data-icon="gear" >Config</a>-->
       </header>
-    </section>
-    <div id='map'></div>
+      <div data-role="content">
+        <div id='map'></div>
+      </div>
+    </section>   
  <script type="text/javascript">
     var currentHeading = null;
     document.addEventListener("deviceready", onDeviceReady, false);
