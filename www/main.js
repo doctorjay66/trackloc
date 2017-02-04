@@ -55,6 +55,6 @@ function saveRecord(lat, lng) {
 
 
 
-function gotoMap() {
-  $.mobile.changePage("#viewMap", "slide", false, true);
+function gotoListView() {
+  $.mobile.changePage("#listview", "slide", false, true);
 }
