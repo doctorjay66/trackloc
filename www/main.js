@@ -44,6 +44,16 @@ function onTxError(tx, err) {
   console.log("Leaving onTxError");
 }
 
+function insData(tx) {
+  var sqlStr = 'INSERT INTO LOCTRACK (lat, long) VALUES ()';
+}
+
+function saveRecord() {
+  theDB.transaction(insData, onTxError, onTxSuccess);
+}
+
+
+
 function gotoMap() {
   $.mobile.changePage("#viewMap", "slide", false, true);
 }
