@@ -48,8 +48,9 @@ function insData(tx) {
   var sqlStr = 'INSERT INTO LOCTRACK (lat, long) VALUES ()';
 }
 
-function saveRecord() {
-  theDB.transaction(insData, onTxError, onTxSuccess);
+function saveRecord(lat, lng) {
+  //theDB.transaction(insData, onTxError, onTxSuccess);
+  alert(lat);
 }
 
 
