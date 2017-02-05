@@ -44,13 +44,37 @@ function onTxError(tx, err) {
   console.log("Leaving onTxError");
 }
 
-function insData(tx) {
-  var sqlStr = 'INSERT INTO LOCTRACK (lat, long) VALUES ()';
+function onSqlSuccess(tx, res) {
+  console.log("SQL: success");
+  if(res) {
+    console.log(res);
+  }
+}
+
+function onSqlError(tx, err) {
+  console.log("Entering onSqlError");
+  var msgText;
+  if(err) {
+    msgText = "SQL: " + err.message + " (" + err.code + ")";
+  } else {
+    msgText = "SQL: Unknown error";
+  }
+  console.error(msgText);
+  alert(msgText);
+  console.log("Leaving onSqlError");
+}
+
+function insertRecord(tx) {
+  var sqlStr = 'INSERT INTO LOCTRACK (lat, long) VALUES (?, ?)';
+  var tmpLat = document.getElementById('editLat').value;
+  var tmpLng = document.getElementById('editLong').value;
+  tx.executeSql(sqlStr, [tmpLat, tmpLng], onSqlSuccess, onSqlError);
 }
 
 function saveRecord(lat, lng) {
   //theDB.transaction(insData, onTxError, onTxSuccess);
-  alert(lat);alert(lng);
+  //alert(lat);alert(lng);
+  theDB.transaction(insertRecord, onTxError, onTxSuccess);
 }
 
 
