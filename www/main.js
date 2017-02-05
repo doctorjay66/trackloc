@@ -50,7 +50,7 @@ function insData(tx) {
 
 function saveRecord(lat, lng) {
   //theDB.transaction(insData, onTxError, onTxSuccess);
-  alert(lat);
+  alert(lat.value);
 }
 
 
