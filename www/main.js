@@ -68,16 +68,15 @@ function insertRecord(tx) {
   var sqlStr = 'INSERT INTO LOCTRACK (lat, long) VALUES (?, ?)';
   var tmpLat = document.getElementById('editLat').value;
   var tmpLng = document.getElementById('editLong').value;
+  alert(tmpLat);
   tx.executeSql(sqlStr, [tmpLat, tmpLng], onSqlSuccess, onSqlError);
 }
 
-function saveRecord(lat, lng) {
+function saveRecord() {
   //theDB.transaction(insData, onTxError, onTxSuccess);
   //alert(lat);alert(lng);
   theDB.transaction(insertRecord, onTxError, onTxSuccess);
 }
-
-
 
 function gotoListView() {
   $.mobile.changePage("#listview", "slide", false, true);
