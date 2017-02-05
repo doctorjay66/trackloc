@@ -78,6 +78,47 @@ function saveRecord() {
   theDB.transaction(insertRecord, onTxError, onTxSuccess);
 }
 
+function openView(viewType) {
+  var sqlStr = 'SELECT lat, long FROM LOCTRACK';
+  theDB.transaction(function(tx) {
+    tx.executeSql(sqlStr, [], onQuerySuccess, onQueryFailure);
+    }, onTxError, onTxSuccess);
+}
+
+function onQuerySuccess(tx, results) {
+  console.log("Entering onQuerySuccess");
+  if(results.rows) {
+    console.log("Rows: " + results.rows);
+    var htmlStr = "";
+    var len = results.rows.length;
+    if(len > 0) {
+      for(var i = 0; i < len; i++) {
+        var lat = results.rows.item(i).lat;
+        alert(lat);
+      }
+    } else {
+      //This should never happen
+      alert("No rows.");
+    }
+  } else {
+    alert("No records match selection criteria.");
+  }
+  console.log("Leaving openView");
+}
+
+function onQueryFailure(tx, err) {
+  console.log("Entering onQueryFailure");
+  var msgText;
+  if(err) {
+    msgText = "Query: " + err;
+  } else {
+    msgText = "Query: Unknown error";
+  }
+  console.error(msgText);
+  alert(msgText);
+  console.log("Leaving onQueryFailure");
+}
+
 function gotoListView() {
   $.mobile.changePage("#listview", "slide", false, true);
 }
