@@ -97,7 +97,7 @@ function onQuerySuccess(tx, results) {
         var lat = results.rows.item(i).lat;
         var lng = results.rows.item(i).long;
         var notes = results.rows.item(i).notes;
-        htmlStr += '<li>Lat: ' + '<a href="#" onclick="openMap('+lat+');">' + lat + '</a>' + '&nbsp;' + notes+ '</li>';
+        htmlStr += '<li>Lat: ' + '<a href="#" onclick="openMap('+lat+','+lng+');">' + lat + '</a>' + '&nbsp;' + notes+ '</li>';
         //htmlStr += '<li>Lat:</b> ' + lat + '</li>';
         //alert(lat);
       }
@@ -125,7 +125,8 @@ function onQueryFailure(tx, err) {
   console.log("Leaving onQueryFailure");
 }
 
-function openMap(lat) {
+function openMap(lat, lng) {
+  $("#mapsaved").html(lat+' '+lng);
   $.mobile.changePage("#mapview", "slide", false, true);
 }
 
