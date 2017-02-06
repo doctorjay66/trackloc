@@ -65,11 +65,12 @@ function onSqlError(tx, err) {
 }
 
 function insertRecord(tx) {
-  var sqlStr = 'INSERT INTO LOCTRACK (lat, long) VALUES (?, ?)';
+  var sqlStr = 'INSERT INTO LOCTRACK (lat, long, notes) VALUES (?, ?, ?)';
   var tmpLat = document.getElementById('editLat').value;
   var tmpLng = document.getElementById('editLong').value;
+  var tmpNotes = document.getElementById('editnotes').value;
   alert(tmpLat);
-  tx.executeSql(sqlStr, [tmpLat, tmpLng], onSqlSuccess, onSqlError);
+  tx.executeSql(sqlStr, [tmpLat, tmpLng, tmpNotes], onSqlSuccess, onSqlError);
 }
 
 function saveRecord() {
@@ -79,7 +80,7 @@ function saveRecord() {
 }
 
 function openView(viewType) {
-  var sqlStr = 'SELECT lat, long FROM LOCTRACK';
+  var sqlStr = 'SELECT lat, long, notes FROM LOCTRACK';
   theDB.transaction(function(tx) {
     tx.executeSql(sqlStr, [], onQuerySuccess, onQueryFailure);
     }, onTxError, onTxSuccess);
