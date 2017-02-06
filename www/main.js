@@ -126,7 +126,18 @@ function onQueryFailure(tx, err) {
 }
 
 function openMap(lat, lng) {
-  $("#mapsaved").html(lat+' '+lng);
+  //$("#mapsaved").html(lat+' '+lng);
+          var options = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, lng),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+      
+        alert("init saved map");
+        
+        var map = new google.maps.Map(document.getElementById('mapsaved'), options);
+        var markerPoint = new google.maps.LatLng(lat, lng);
+        var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});
   $.mobile.changePage("#mapview", "slide", false, true);
 }
 
