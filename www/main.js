@@ -141,7 +141,7 @@ function openMap(lat, lng) {
   $.mobile.changePage("#mapview", "slide", false, true);
 }
 
-    function initMap(lat, long){
+    function initMap(lat, long, elname){
         var options = {
             zoom: 8,
             center: new google.maps.LatLng(lat, long),
@@ -150,7 +150,7 @@ function openMap(lat, lng) {
       
         alert("init map");
         
-        var map = new google.maps.Map(document.getElementById('map'), options);
+        var map = new google.maps.Map(document.getElementById(elname), options);
         var markerPoint = new google.maps.LatLng(lat, long);
         var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});
     }
