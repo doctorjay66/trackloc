@@ -94,8 +94,13 @@ function onQuerySuccess(tx, results) {
     if(len > 0) {
       for(var i = 0; i < len; i++) {
         var lat = results.rows.item(i).lat;
-        alert(lat);
+        var lng = results.rows.item(i).long;
+        var notes = results.rows.item(i).notes;
+        htmlStr += '<li>Lat: ' + lat + '&nbsp;' + notes+ '</li>';
+        //htmlStr += '<li>Lat:</b> ' + lat + '</li>';
+        //alert(lat);
       }
+      $("#listview").html(htmlStr);
     } else {
       //This should never happen
       alert("No rows.");
@@ -120,5 +125,6 @@ function onQueryFailure(tx, err) {
 }
 
 function gotoListView() {
+  openView(1);
   $.mobile.changePage("#listview", "slide", false, true);
 }
