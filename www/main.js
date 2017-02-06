@@ -127,7 +127,7 @@ function onQueryFailure(tx, err) {
 
 function openMap(lat, lng) {
   //$("#mapsaved").html(lat+' '+lng);
-          var options = {
+       /*var options = {
             zoom: 8,
             center: new google.maps.LatLng(lat, lng),
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -137,9 +137,23 @@ function openMap(lat, lng) {
         
         var map = new google.maps.Map(document.getElementById('mapsaved'), options);
         var markerPoint = new google.maps.LatLng(lat, lng);
-        var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});
+        var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});*/
   $.mobile.changePage("#mapview", "slide", false, true);
 }
+
+    function initMap(lat, long){
+        var options = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+      
+        alert("init map");
+        
+        var map = new google.maps.Map(document.getElementById('map'), options);
+        var markerPoint = new google.maps.LatLng(lat, long);
+        var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});
+    }
 
 function gotoListView() {
   openView(1);
