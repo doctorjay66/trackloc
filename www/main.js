@@ -138,7 +138,8 @@ function openMap(lat, lng) {
         var map = new google.maps.Map(document.getElementById('mapsaved'), options);
         var markerPoint = new google.maps.LatLng(lat, lng);
         var marker = new google.maps.Marker({position: markerPoint, map: map, title: 'Device Location'});*/
-  $.mobile.changePage("#mapview", "slide", false, true);
+  initMap(lat, lng, 'mapsaved');
+  //$.mobile.changePage("#mapview", "slide", false, true);
 }
 
     function initMap(lat, long, elname){
